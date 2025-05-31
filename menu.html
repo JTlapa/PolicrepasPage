@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
   <title>Menú | Policrepas</title>
 
   <!-- Bootstrap -->
@@ -18,6 +18,10 @@
       --cobre: #B7622F;
       --negro: #000000;
       --fondo-container: #FAEDE7;
+    }
+
+    * {
+      box-sizing: border-box;
     }
 
     body {
@@ -38,9 +42,10 @@
     }
 
     .logo img {
-      width: 180px;
+      width: 160px;
+      max-width: 70%;
       display: block;
-      margin: 40px auto 20px auto;
+      margin: 30px auto 15px auto;
       border-radius: 50%;
       border: 5px solid var(--cobre);
       background-color: white;
@@ -49,18 +54,19 @@
     h1 {
       text-align: center;
       color: var(--cobre);
-      margin-bottom: 40px;
+      margin-bottom: 30px;
+      font-size: 1.8rem;
     }
 
     .menu-item {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
     .menu-item img {
-      width: 80%;
+      width: 100%;
       max-width: 300px;
-      border-radius: 10px;
+      border-radius: 12px;
       border: 6px solid var(--amarillo);
       object-fit: cover;
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
@@ -73,6 +79,7 @@
 
     .menu-item h3 {
       margin-top: 15px;
+      font-size: 1.25rem;
       color: var(--negro);
     }
 
@@ -85,10 +92,10 @@
       color: var(--rosa);
       border: 2px solid var(--rosa);
       border-radius: 50px;
-      padding: 5px 15px;
+      padding: 6px 16px;
       font-weight: bold;
       font-size: 14px;
-      transition: background-color 0.3s;
+      transition: all 0.3s;
       text-decoration: none;
     }
 
@@ -98,13 +105,18 @@
     }
 
     @media (max-width: 576px) {
-      .menu-item img {
-        width: 90%;
+      .main-container {
+        margin: 20px 10px;
+        padding: 15px;
+      }
+
+      .menu-item h3 {
+        font-size: 1.1rem;
       }
 
       .back-btn {
         font-size: 12px;
-        padding: 4px 12px;
+        padding: 5px 12px;
       }
     }
   </style>
@@ -112,31 +124,31 @@
 <body>
 
   <!-- Botón Regresar -->
-  <a href="index.html" class="back-btn">← Regresar</a>
+  <a href="index.html" class="back-btn" aria-label="Regresar al inicio">← Regresar</a>
 
   <div class="main-container">
     <div class="logo">
-      <img src="./images/logo.png" alt="Policrepas Logo">
+      <img src="./images/logo.png" alt="Logo de Policrepas">
     </div>
     <h1>Menú</h1>
 
     <div class="menu-item" data-aos="fade-up">
-      <img src="./images/Menu1.jpg" alt="Crepa Dulce">
+      <img src="./images/Menu1.jpg" alt="Crepas dulces y saladas">
       <h3>Crepas</h3>
     </div>
 
     <div class="menu-item" data-aos="fade-up" data-aos-delay="100">
-      <img src="./images/Menu3.jpg" alt="Crepa Salada">
+      <img src="./images/Menu3.jpg" alt="Waffles caseros">
       <h3>Waffles</h3>
     </div>
 
     <div class="menu-item" data-aos="fade-up" data-aos-delay="200">
-      <img src="./images/Menu2.jpg" alt="Malteadas">
+      <img src="./images/Menu2.jpg" alt="Bebidas frías y calientes">
       <h3>Bebidas</h3>
     </div>
 
     <div class="menu-item" data-aos="fade-up" data-aos-delay="300">
-      <img src="./images/Menu4.jpg" alt="Especial de Temporada">
+      <img src="./images/Menu4.jpg" alt="Frappés de sabores">
       <h3>Frappés</h3>
     </div>
   </div>

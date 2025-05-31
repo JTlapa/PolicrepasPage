@@ -34,7 +34,8 @@
     }
 
     .logo img {
-      width: 250px;
+      width: 100%;
+      max-width: 250px;
       border-radius: 50%;
       border: 4px solid var(--cobre);
       background-color: white;
@@ -44,6 +45,7 @@
     h1 {
       color: var(--cobre);
       margin-bottom: 30px;
+      font-size: 1.5rem;
     }
 
     .social-links {
@@ -79,12 +81,13 @@
     .menu-button {
       background-color: var(--cobre);
       border: none;
-      padding: 10px 25px;
+      padding: 12px 30px;
       font-size: 1.2rem;
       color: white;
       border-radius: 12px;
       text-decoration: none;
       transition: background 0.3s;
+      display: inline-block;
     }
 
     .menu-button:hover {
@@ -92,10 +95,32 @@
       color: var(--negro);
     }
 
+    @media (max-width: 576px) {
+      .main-container {
+        margin: 30px 15px;
+        padding: 30px 15px;
+      }
 
-    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.2rem;
+      }
+
       .social-links {
         gap: 15px;
+      }
+
+      .social-links a {
+        width: 50px;
+        height: 50px;
+      }
+
+      .social-links i {
+        font-size: 20px;
+      }
+
+      .menu-button {
+        padding: 10px 20px;
+        font-size: 1rem;
       }
     }
   </style>
@@ -104,7 +129,7 @@
 
   <div class="main-container">
     <div class="logo">
-      <img src="./images/logo.png" alt="Policrepas Logo">
+      <img src="./images/logo.png" alt="Policrepas Logo" class="img-fluid">
     </div>
     <h1>¡Las mejores crepas y waffles que han existido!</h1>
 
@@ -115,7 +140,7 @@
     </div>
 
     <a class="menu-button" href="./menu.html">Ver Menú</a>
-
+  </div>
 
 </body>
 </html>
