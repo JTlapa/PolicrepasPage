@@ -2,218 +2,688 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
-  <title>Premios Policrepas</title>
+  <title>Ruleta para Mamá</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
   <style>
+
     :root {
-      --amarillo: #F8DF75;
-      --amarillo-suave: #FFFDD5;
-      --rosa: #FF2DB0;
-      --cobre: #B7622F;
-      --negro: #000000;
-      --fondo-container: #FAEDE7;
+
+      --rosa-claro: #FFE8EE;
+      --rosa: #FF73A8;
+      --rosa-fuerte: #FF4F87;
+      --crema: #FFF7F2;
+      --dorado: #D6A85F;
+      --cafe: #9B5E3C;
+      --texto: #5B3B2E;
+      --blanco: #FFFFFF;
+
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
     body {
-      background-color: var(--amarillo);
-      padding-top: 40px;
-      font-family: 'Segoe UI', sans-serif;
-      color: var(--negro);
-    }
 
-    h1, h2 {
-      color: var(--cobre);
-      text-shadow: 1px 1px var(--amarillo);
+      background:
+      radial-gradient(circle at top left,
+      rgba(255,255,255,0.5),
+      transparent 30%),
+
+      radial-gradient(circle at bottom right,
+      rgba(255,255,255,0.4),
+      transparent 30%),
+
+      var(--rosa-claro);
+
+      min-height:100vh;
+
+      padding: 40px 20px;
+
+      font-family: 'Poppins', sans-serif;
+
+      color: var(--texto);
+
     }
 
     .game-container {
-      background-color: var(--fondo-container);
-      border-radius: 20px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-      padding: 30px;
-      max-width: 500px;
+
+      background: rgba(255,255,255,0.55);
+
+      backdrop-filter: blur(6px);
+
+      border: 2px solid rgba(255,255,255,0.5);
+
+      border-radius: 35px;
+
+      box-shadow:
+      0 10px 30px rgba(0,0,0,0.08),
+      inset 0 0 0 1px rgba(255,255,255,0.4);
+
+      padding: 35px 20px 30px;
+
+      max-width: 600px;
+
       margin: auto;
+
+      position: relative;
+
+      overflow: hidden;
+
+    }
+
+    .game-container::before{
+
+      content:"🌸";
+
+      position:absolute;
+
+      top:15px;
+      left:20px;
+
+      font-size:30px;
+
+      opacity:.4;
+
+    }
+
+    .game-container::after{
+
+      content:"💖";
+
+      position:absolute;
+
+      bottom:20px;
+      right:20px;
+
+      font-size:28px;
+
+      opacity:.3;
+
+    }
+
+    h1{
+
+      font-family: 'Pacifico', cursive;
+
+      color: var(--rosa-fuerte);
+
+      font-size: 3rem;
+
+      margin-bottom: 25px;
+
+      text-shadow: 2px 2px 0px rgba(255,255,255,.8);
+
+    }
+
+    .subtitle{
+
+      color: var(--cafe);
+
+      font-size: .95rem;
+
+      margin-top: -10px;
+
+      margin-bottom: 25px;
+
+      font-weight: 500;
+
     }
 
     #wheel-container {
+
       position: relative;
-      width: 400px;
-      height: 400px;
+
+      width: 430px;
+      height: 430px;
+
       margin: 0 auto;
+
     }
 
     #wheel {
+
       position: absolute;
+
       top: 50%;
       left: 50%;
+
       width: 100%;
       height: 100%;
+
       transform: translate(-50%, -50%);
+
       transform-origin: center center;
-      transition: transform 5s cubic-bezier(0.33, 1, 0.68, 1);
+
+      transition:
+      transform 5s cubic-bezier(0.33, 1, 0.68, 1);
+
     }
 
     .circle-option {
+
       position: absolute;
-      width: 90px;
-      height: 90px;
+
+      width: 95px;
+      height: 95px;
+
       border-radius: 50%;
+
       overflow: hidden;
+
       display: flex;
+
       align-items: center;
       justify-content: center;
-      border: 4px solid;
+
+      background: white;
+
+      border: 5px solid white;
+
+      box-shadow:
+      0 6px 14px rgba(0,0,0,0.15),
+      0 0 0 4px rgba(255,255,255,.4);
+
+      transition: transform .3s;
+
+    }
+
+    .circle-option:hover{
+      transform: scale(1.06);
     }
 
     .circle-option img {
+
       width: 100%;
       height: 100%;
+
       object-fit: cover;
+
       border-radius: 50%;
+
     }
+
+    #center-image {
+
+      position: absolute;
+
+      top: 50%;
+      left: 50%;
+
+      width: 165px;
+      height: 165px;
+
+      transform: translate(-50%, -50%);
+
+      border-radius: 50%;
+
+      overflow: hidden;
+
+      border: 6px solid white;
+
+      background-color: white;
+
+      z-index: 5;
+
+      box-shadow:
+      0 10px 20px rgba(0,0,0,0.15),
+      0 0 0 6px rgba(255,255,255,.4);
+
+    }
+
+    #center-image img {
+
+      width: 100%;
+      height: 100%;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+
+    }
+
+    /* Flecha */
 
     #pointer {
-  position: absolute;
-  top: 45%;
-  left: 100%;
-  transform: translateY(-50%);
-  transform: rotate(180deg);
-  width: 0;
-  height: 0;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 30px solid var(--negro);
-  z-index: 10;
-}
 
+      position: absolute;
 
-    .btn-primary {
-      background-color: var(--cobre);
-      border-color: var(--cobre);
+      top: 50%;
+      left: 100%;
+
+      transform: translateY(-50%);
+
+      z-index: 10;
+
     }
 
-    .btn-primary:hover {
-      background-color: var(--rosa);
-      border-color: var(--rosa);
-      color: var(--negro);
-    }
-    #center-image {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 150px;
-  height: 150px;
-  transform: translate(-50%, -50%);
-  border-radius: 50%;
-  overflow: hidden;
-  border: 4px solid var(--cobre);
-  background-color: white;
-  z-index: 5;
-}
+    #pointer::before{
 
-#center-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 50%;
-}
+      content:"💖";
+
+      font-size:48px;
+
+      position:absolute;
+
+      left:-10px;
+      top:-25px;
+
+      filter:
+      drop-shadow(0 4px 5px rgba(0,0,0,.2));
+
+    }
+
+    /* Botón */
+
+    .spin-btn {
+
+      margin-top: 25px;
+
+      border: none;
+
+      background:
+      linear-gradient(
+      135deg,
+      var(--rosa),
+      var(--rosa-fuerte)
+      );
+
+      color: white;
+
+      font-weight: 600;
+
+      font-size: 1.1rem;
+
+      padding: 14px 35px;
+
+      border-radius: 18px;
+
+      box-shadow:
+      0 8px 18px rgba(255,79,135,.35);
+
+      transition: .25s;
+
+    }
+
+    .spin-btn:hover{
+
+      transform:
+      translateY(-2px)
+      scale(1.03);
+
+    }
+
+    .spin-btn:disabled{
+
+      opacity: .7;
+
+      cursor: not-allowed;
+
+    }
+
+    /* Resultado */
+
+    #result-card {
+
+      margin-top: 30px;
+
+      background: rgba(255,255,255,0.7);
+
+      border-radius: 25px;
+
+      padding: 22px 18px;
+
+      box-shadow:
+      0 8px 20px rgba(0,0,0,.08);
+
+      border: 1px solid rgba(255,255,255,.6);
+
+    }
+
+    #result-title {
+
+      font-size: 1rem;
+
+      color: var(--cafe);
+
+      font-weight: 600;
+
+      margin-bottom: 8px;
+
+    }
+
+    #result {
+
+      font-size: 2rem;
+
+      color: var(--rosa-fuerte);
+
+      font-weight: 700;
+
+      line-height: 1.2;
+
+    }
+
+    @media(max-width: 500px){
+
+      h1{
+        font-size: 2.3rem;
+      }
+
+      #wheel-container{
+        width: 340px;
+        height: 340px;
+      }
+
+      .circle-option{
+        width: 75px;
+        height: 75px;
+      }
+
+      #center-image{
+        width: 130px;
+        height: 130px;
+      }
+
+      #result{
+        font-size: 1.5rem;
+      }
+
+    }
 
   </style>
+
 </head>
+
 <body>
+
   <div class="container text-center">
+
     <div class="game-container">
-      <h1 class="mb-4">🥳Polipremios🥳</h1>
+
+      <h1>🌷 Ruleta para Mamá 🌷</h1>
+
+      <p class="subtitle">
+        Gira la ruleta y sorprende a mamá con un delicioso premio 💖
+      </p>
 
       <div id="wheel-container">
+
         <div id="pointer"></div>
+
         <div id="center-image">
-          <img src="images/logo.png" alt="Centro" />
+
+          <img
+            src="images/logo.png"
+            alt="Centro"
+          >
+
         </div>
+
         <div id="wheel"></div>
+
       </div>
 
-      <button id="spinBtn" class="btn btn-primary mt-4">Girar</button>
-      <h2 id="result" class="mt-4"></h2>
+      <button
+        id="spinBtn"
+        class="spin-btn"
+      >
+        ✨ Girar Ruleta
+      </button>
+
+      <div id="result-card">
+
+        <div id="result-title">
+          🎁 Premio obtenido
+        </div>
+
+        <div id="result">
+          ¡Mucha suerte! 💖
+        </div>
+
+      </div>
+
     </div>
+
   </div>
 
   <script>
+
     const items = [
-      { name: "¡Una crepa cualquiera gratis!", img: "./images/3.png" },
-      { name: "¡30% de descuento en tu consumo!", img: "./images/30.png" },
-      { name: "¡Waffles tradicionales gratis!", img: "./images/4.jpg" },
-      { name: "¡Una delicosa malteada preparada gratis!", img: "./images/2.png" },
-      { name: "¡50% de descuento en tu consumo!", img: "./images/50.png" },
-      { name: "¡Una crepa sencilla gratis!", img: "./images/1.png" },
-      { name: "¡Suerte para la próxima!", img: "./images/nada.png" },
-      { name: "¡Frappé gratis de cualquier sabor!", img: "./images/5.jpg" }
+
+      {
+        name: "¡Una crepa cualquiera gratis!",
+        img: "./images/3.png"
+      },
+
+      {
+        name: "¡30% de descuento!",
+        img: "./images/30.png"
+      },
+
+      {
+        name: "¡Waffles gratis!",
+        img: "./images/4.jpg"
+      },
+
+      {
+        name: "¡Malteada preparada gratis!",
+        img: "./images/2.png"
+      },
+
+      {
+        name: "¡50% de descuento!",
+        img: "./images/50.png"
+      },
+
+      {
+        name: "¡Crepa sencilla gratis!",
+        img: "./images/1.png"
+      },
+
+      {
+        name: "¡Suerte para la próxima!",
+        img: "./images/nada.png"
+      },
+
+      {
+        name: "¡Frappé gratis!",
+        img: "./images/5.jpg"
+      }
+
     ];
-  
-    const probabilities = [0.18, 0.09, 0.12, 0.15, 0.06, 0.26, 0.03, 0.11];
-    const coloresBorde = ["#F8DF75", "#FFFDD5", "#FF2DB0", "#B7622F", "#000000"];
-    const wheel = document.getElementById("wheel");
-    const totalItems = items.length;
-    const radius = 140;
 
-    // Posicionar los círculos
+    const probabilities = [
+
+      0.18,
+      0.09,
+      0.12,
+      0.15,
+      0.06,
+      0.26,
+      0.03,
+      0.11
+
+    ];
+
+    const coloresBorde = [
+
+      "#FFD6E4",
+      "#FFE8C8",
+      "#FDC5F5",
+      "#F9D29D",
+      "#FEE1E8"
+
+    ];
+
+    const wheel =
+    document.getElementById("wheel");
+
+    const spinBtn =
+    document.getElementById("spinBtn");
+
+    const result =
+    document.getElementById("result");
+
+    const totalItems =
+    items.length;
+
+    const wheelSize = 430;
+
+    const itemSize = 95;
+
+    const radius = 155;
+
+    // =========================
+    // CREAR ELEMENTOS
+    // =========================
+
     items.forEach((item, i) => {
-      const angle = (2 * Math.PI / totalItems) * i;
-      const x = 200 + radius * Math.cos(angle) - 45;
-      const y = 200 + radius * Math.sin(angle) - 45;
 
-      const circle = document.createElement("div");
-      circle.className = "circle-option";
-      circle.style.left = `${x}px`;
-      circle.style.top = `${y}px`;
-      circle.style.backgroundColor = coloresBorde[i % coloresBorde.length];
-      circle.style.borderColor = coloresBorde[i % coloresBorde.length];
+      const angle =
+      ((2 * Math.PI) / totalItems) * i
+      - Math.PI / 2;
 
-      const img = document.createElement("img");
+      const center =
+      wheelSize / 2;
+
+      const x =
+      center
+      + radius * Math.cos(angle)
+      - itemSize / 2;
+
+      const y =
+      center
+      + radius * Math.sin(angle)
+      - itemSize / 2;
+
+      const circle =
+      document.createElement("div");
+
+      circle.className =
+      "circle-option";
+
+      circle.style.left =
+      `${x}px`;
+
+      circle.style.top =
+      `${y}px`;
+
+      circle.style.backgroundColor =
+      coloresBorde[i % coloresBorde.length];
+
+      const img =
+      document.createElement("img");
+
       img.src = item.img;
+
       circle.appendChild(img);
+
       wheel.appendChild(circle);
+
     });
+
+    // =========================
+    // GIRO
+    // =========================
 
     let rotation = 0;
 
-    document.getElementById("spinBtn").addEventListener("click", () => {
-      const resultIndex = weightedRandomIndex(probabilities);
-      const degreePerItem = 360 / totalItems;
+    spinBtn.addEventListener("click", () => {
 
-      // Apunta al centro visual del ítem
-      const offset = 360 / totalItems / 2;
+      spinBtn.disabled = true;
 
-      const stopAngle = 360 - (resultIndex * degreePerItem) - offset;
-      const spins = 5;
-      rotation += spins * 360 + stopAngle;
+      const resultIndex =
+      weightedRandomIndex(probabilities);
 
-      wheel.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+      const degreePerItem =
+      360 / totalItems;
+
+      // El ítem debe quedar EXACTO
+      // frente a la flecha
+const targetAngle =
+  90 - (resultIndex * degreePerItem);
+
+      // Rotación actual normalizada
+
+      const currentRotation =
+      ((rotation % 360) + 360) % 360;
+
+      // Diferencia exacta
+
+      const delta =
+      ((targetAngle - currentRotation)
+      + 360) % 360;
+
+      // Vueltas extra
+
+      const extraSpins = 5;
+
+      // Rotación final
+
+      rotation +=
+      (extraSpins * 360) + delta;
+
+      wheel.style.transform =
+      `translate(-50%, -50%)
+      rotate(${rotation}deg)`;
+
+      // Mostrar premio
 
       setTimeout(() => {
-      // Obtener el ángulo final normalizado entre 0 y 360
-      const finalRotation = rotation % 360;
 
-      // Calcular en qué índice cae el ángulo
-      const degreePerItem = 360 / totalItems;
-      const index = Math.floor(((360 - finalRotation + offset) % 360) / degreePerItem);
+        result.innerHTML =
+        `💖 ${items[resultIndex].name}`;
 
-      document.getElementById("result").textContent = "🎉Premio: " + items[index].name;
-    }, 5000);
+        spinBtn.disabled = false;
+
+      }, 5000);
 
     });
 
+    // =========================
+    // PROBABILIDADES
+    // =========================
+
     function weightedRandomIndex(prob) {
+
       const r = Math.random();
+
       let acc = 0;
+
       for (let i = 0; i < prob.length; i++) {
+
         acc += prob[i];
-        if (r <= acc) return i;
+
+        if (r <= acc) {
+          return i;
+        }
+
       }
+
       return prob.length - 1;
+
     }
+
   </script>
+
 </body>
 </html>
